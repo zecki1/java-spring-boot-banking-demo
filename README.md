@@ -115,11 +115,17 @@ mvn test jacoco:report
 
 ## Deploy
 
+**Em produção:** https://java-spring-boot-banking-demo-production.up.railway.app
+
+- Swagger UI: https://java-spring-boot-banking-demo-production.up.railway.app/swagger-ui/index.html
+- Health: https://java-spring-boot-banking-demo-production.up.railway.app/actuator/health
+
 ### Railway
 1. Push para GitHub
 2. Conectar Railway ao repositório
-3. Auto-detecta Spring Boot e inicia build
-4. URL gerada automaticamente
+3. Auto-detecta Spring Boot e inicia build (`dependency:list install -Pproduction`)
+4. Start via `Procfile` (`java -jar target/spring-boot-demo-1.0.0.jar`); a porta vem de `PORT`
+5. URL gerada automaticamente
 
 ### Render
 1. Push para GitHub
