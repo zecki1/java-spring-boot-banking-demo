@@ -1,7 +1,10 @@
 package com.banking.demo.controller;
 
+import com.banking.demo.model.AnaliseGastos;
 import com.banking.demo.model.ApiResponse;
+import com.banking.demo.model.AvaliacaoEstabelecimento;
 import com.banking.demo.model.Transacao;
+import com.banking.demo.service.AnaliseGastosService;
 import com.banking.demo.service.TransacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,6 +43,66 @@ public class TransacaoController {
 
     @Autowired
     private TransacaoService transacaoService; // Dependency Injection (como require no Node)
+
+    @Autowired
+    private AnaliseGastosService analiseGastosService;
+
+    /**
+     * GET /api/transacoes/analise
+     * Comparativo mensal + gastos recorrentes + sugestões de economia.
+     *
+     * Um endpoint só porque os três blocos saem dos mesmos dados e a tela de
+     * análise é lida de uma vez.
+     */
+    @GetMapping("/analise")
+    public ResponseEntity<ApiResponse<AnaliseGastos>> analisar() {
+        AnaliseGastos analise = analiseGastosService.analisar();
+        return ResponseEntity.ok(ApiResponse.success("Análise de gastos gerada", analise));
+    }
+
+    /**
+     * GET /api/transacoes/erros
+     * Transações reprovadas ou estornadas — alimenta o sino de avisos.
+     */
+    @GetMapping("/erros")
+    public ResponseEntity<ApiResponse<List<Transacao>>> listarComErro() {
+        return ResponseEntity.ok(transacaoService.listarComErro());
+    }
+
+    /**
+     * PATCH /api/transacoes/{id}/avaliacao
+     * Nota de 1 a 5 (e comentário opcional) para a transação.
+     */
+    @PatchMapping("/{id}/avaliacao")
+    public ResponseEntity<ApiResponse<Transacao>> avaliar(
+            @PathVariable Long id,
+            @RequestBody AvaliacaoRequest request) {
+        Optional<ApiResponse<Transacao>> response =
+                transacaoService.avaliar(id, request.nota(), request.comentario());
+        if (response.isPresent() && response.get().isSuccess()) {
+            return ResponseEntity.ok(response.get());
+        }
+        return ResponseEntity.badRequest().body(
+                response.orElse(ApiResponse.error("Avaliação inválida")));
+    }
+
+    /**
+     * GET /api/transacoes/estabelecimentos/{nome}/avaliacao
+     * Média das notas de uma loja, a partir das transações dela.
+     */
+    @GetMapping("/estabelecimentos/{nome}/avaliacao")
+    public ResponseEntity<ApiResponse<AvaliacaoEstabelecimento>> avaliarEstabelecimento(
+            @PathVariable String nome) {
+        ApiResponse<AvaliacaoEstabelecimento> response = transacaoService.avaliarEstabelecimento(nome);
+        if (response.isSuccess()) {
+            return ResponseEntity.ok(response);
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+    }
+
+    /** Corpo do PATCH de avaliação. */
+    public record AvaliacaoRequest(Integer nota, String comentario) {
+    }
 
     /**
      * GET /api/transacoes
