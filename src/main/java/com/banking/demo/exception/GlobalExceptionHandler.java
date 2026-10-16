@@ -1,6 +1,6 @@
-package com.cwi.demo.exception;
+package com.banking.demo.exception;
 
-import com.cwi.demo.model.ApiResponse;
+import com.banking.demo.model.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

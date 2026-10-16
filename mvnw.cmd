@@ -18,4 +18,4 @@ if not exist "%WRAPPER_JAR%" (
 set JAVA_EXE=java.exe
 if defined JAVA_HOME set JAVA_EXE=%JAVA_HOME%\bin\java.exe
 
-"%JAVA_EXE%" -classpath "%WRAPPER_JAR%" %WRAPPER_LAUNCHER% %*
+"%JAVA_EXE%" "-Dmaven.multiModuleProjectDirectory=%MAVEN_PROJECTBASEDIR%" -classpath "%WRAPPER_JAR%" %WRAPPER_LAUNCHER% %*

@@ -1,4 +1,4 @@
-package com.cwi.demo.model;
+package com.banking.demo.model;
 
 import java.time.LocalDateTime;
 import java.util.List;

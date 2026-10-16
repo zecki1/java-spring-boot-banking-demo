@@ -1,7 +1,7 @@
-package com.cwi.demo.service;
+package com.banking.demo.service;
 
-import com.cwi.demo.model.Transacao;
-import com.cwi.demo.model.ApiResponse;
+import com.banking.demo.model.Transacao;
+import com.banking.demo.model.ApiResponse;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

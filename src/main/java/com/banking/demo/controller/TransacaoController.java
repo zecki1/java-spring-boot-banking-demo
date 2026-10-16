@@ -1,8 +1,8 @@
-package com.cwi.demo.controller;
+package com.banking.demo.controller;
 
-import com.cwi.demo.model.ApiResponse;
-import com.cwi.demo.model.Transacao;
-import com.cwi.demo.service.TransacaoService;
+import com.banking.demo.model.ApiResponse;
+import com.banking.demo.model.Transacao;
+import com.banking.demo.service.TransacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.cwi.demo.config;
+package com.banking.demo.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;

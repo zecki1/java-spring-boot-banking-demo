@@ -1,4 +1,4 @@
-package com.cwi.demo.model;
+package com.banking.demo.model;
 
 import java.math.BigDecimal;
 

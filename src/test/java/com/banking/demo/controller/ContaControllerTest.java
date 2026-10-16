@@ -1,8 +1,8 @@
-package com.example.demo.controller;
+package com.banking.demo.controller;
 
-import com.example.demo.model.ApiResponse;
-import com.example.demo.model.Conta;
-import com.example.demo.service.ContaService;
+import com.banking.demo.model.ApiResponse;
+import com.banking.demo.model.Conta;
+import com.banking.demo.service.ContaService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

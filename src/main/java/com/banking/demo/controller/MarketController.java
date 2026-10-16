@@ -1,6 +1,6 @@
-package com.cwi.demo.controller;
+package com.banking.demo.controller;
 
-import com.cwi.demo.model.ApiResponse;
+import com.banking.demo.model.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;

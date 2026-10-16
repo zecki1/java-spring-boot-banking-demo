@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.cwi.demo</groupId>
+    <groupId>com.banking.demo</groupId>
     <artifactId>spring-boot-demo</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>Spring Boot Demo</name>
-    <description>Backend demo em Spring Boot para comparar com Node.js/Express na entrevista CWI</description>
+    <description>Backend demo em Spring Boot para comparar com Node.js/Express</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -65,4 +65,14 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <!-- Perfil usado no deploy (Railway). Centraliza ajustes de produção. -->
+        <profile>
+            <id>production</id>
+            <properties>
+                <spring.profiles.active>production</spring.profiles.active>
+            </properties>
+        </profile>
+    </profiles>
 </project>

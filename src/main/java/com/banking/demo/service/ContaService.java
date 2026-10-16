@@ -1,6 +1,6 @@
-package com.cwi.demo.service;
+package com.banking.demo.service;
 
-import com.cwi.demo.model.Conta;
+import com.banking.demo.model.Conta;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
